@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenVistaa | Landscaping & Garden Solutions</title>
+<meta name="description" content="GreenVistaa landscaping and garden solutions. Garden design, landscaping, maintenance, irrigation, vertical gardens and lawn installation.">
+<style>
+:root{--green:#0d4d2c;--green2:#2e9d4d;--light:#f4faf3;--text:#17352a;--muted:#66756e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;background:#fff;z-index:10;box-shadow:0 2px 15px #00000010}
+.logo{font-size:25px;font-weight:800;color:var(--green)}.logo span{color:#70bd43}
+nav a{color:var(--text);text-decoration:none;margin:0 12px;font-size:14px}.navbtn{background:var(--green);color:#fff;padding:11px 18px;border-radius:24px}
+.hero{min-height:620px;display:flex;align-items:center;padding:80px 7%;background:linear-gradient(90deg,#062b1bd9 0%,#062b1b99 45%,#062b1b20 100%),url('hero.jpg') center/cover;color:white}
+.hero h1{font-size:58px;line-height:1.05;max-width:720px;margin:15px 0}.hero h1 span{color:#8be05a}.hero p{font-size:18px;line-height:1.7;max-width:620px}.tag{letter-spacing:3px;font-size:13px;font-weight:bold}.btn{display:inline-block;text-decoration:none;padding:14px 24px;border-radius:28px;margin:15px 8px 0 0;font-weight:bold}.primary{background:#79d34c;color:#0b351f}.outline{border:1px solid white;color:white}
+section{padding:80px 7%}.center{text-align:center}.eyebrow{color:#31994b;font-weight:bold;letter-spacing:2px;font-size:12px}.title{font-size:38px;margin:10px 0}.sub{color:var(--muted);max-width:680px;margin:0 auto 40px;line-height:1.7}
+.services{background:var(--light)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.card{background:white;padding:28px 20px;text-align:center;border-radius:18px;box-shadow:0 8px 30px #17452a10}.icon{font-size:35px}.card h3{margin:15px 0 8px}.card p{color:var(--muted);line-height:1.5;font-size:14px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.about img{width:100%;border-radius:20px}.about p{color:var(--muted);line-height:1.8}.ticks{display:flex;gap:18px;margin:25px 0}.tick{font-size:13px;font-weight:bold}
+.projects{background:#f8fbf7}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.project img{width:100%;height:220px;object-fit:cover;border-radius:14px}.project h4{margin:10px 0 3px}.project small{color:var(--muted)}
+.contact{background:var(--green);color:white;display:grid;grid-template-columns:1fr 1fr;gap:50px}.contact p{line-height:1.7}.form{background:white;padding:28px;border-radius:16px;color:var(--text)}input,select,textarea{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #dce5df;border-radius:8px;font:inherit}textarea{height:100px}.submit{width:100%;border:0;padding:14px;background:#2eaa48;color:white;border-radius:8px;font-weight:bold;cursor:pointer}
+footer{background:#062c1b;color:white;padding:25px 7%;display:flex;justify-content:space-between;align-items:center;font-size:13px}footer a{color:white;margin-left:15px;text-decoration:none}
+@media(max-width:900px){nav .links{display:none}.hero h1{font-size:42px}.cards{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.about,.contact{grid-template-columns:1fr}}
+@media(max-width:560px){section{padding:55px 5%}.hero{padding:65px 6%;min-height:560px}.hero h1{font-size:36px}.cards,.gallery{grid-template-columns:1fr}.project img{height:240px}footer{display:block;line-height:2}}
+.service-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 9px 16px;
+  background: #2e9d4d;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.service-btn:hover {
+  background: #0d4d2c;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.logo span {
+    font-size: 28px;
+    font-weight: 800;
+    color: #168043;
+}
+
+@media (max-width: 600px) {
+    .logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo span {
+        font-size: 22px;
+    }
+}
+.bottom-background {
+    width: 100%;
+    height: 180px;
+
+    background-image: url("bottom img.jpeg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+}
+.brand-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 90px;
+}
+
+.brand-logo img {
+    width: 320px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+@media (max-width: 600px) {
+    .brand-logo img {
+        width: 220px;
+    }
+
+    .brand-logo {
+        height: 70px;
+    }
+}
+
+/* ===== Green Vistaa Advanced UI Upgrade ===== */
+:root{
+  --gv-dark:#0b3d25;--gv-green:#2f9d4f;--gv-lime:#9be66d;
+  --gv-bg:#f5f8f2;--gv-text:#153326;--gv-muted:#68766f;
+}
+body{overflow-x:hidden}
+nav{
+  height:82px;padding:0 6%;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 6px 25px rgba(0,0,0,.07)
+}
+nav .logo{min-width:0}
+nav .logo img{width:190px;height:auto}
+.links{display:flex;align-items:center;gap:3px}
+.links a{padding:10px 13px;border-radius:22px;font-weight:700;transition:.25s}
+.links a:hover{background:#edf8ea;color:var(--gv-green)}
+.navbtn{box-shadow:0 8px 20px rgba(11,61,37,.18)!important}
+.menu-toggle{
+  display:none;border:0;background:#edf8ea;color:var(--gv-dark);
+  width:44px;height:44px;border-radius:50%;font-size:21px;cursor:pointer
+}
+
+.hero{
+  min-height:660px;position:relative;isolation:isolate;
+  background:
+  linear-gradient(90deg,rgba(4,38,23,.94),rgba(4,48,27,.68) 48%,rgba(4,48,27,.12)),
+  url('hero.jpg') center/cover
+}
+.hero h1{font-size:clamp(42px,6vw,68px);letter-spacing:-2px}
+.hero p{max-width:650px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.hero-stat{
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);padding:10px 15px;border-radius:14px;font-size:12px
+}
+.btn{transition:.25s;box-shadow:none}
+.btn:hover{transform:translateY(-3px)}
+.primary{box-shadow:0 12px 28px rgba(0,0,0,.15)}
+.cards .card{
+  border:1px solid #e8eee8;box-shadow:0 8px 28px rgba(23,69,42,.07);
+  transition:.3s;position:relative;overflow:hidden
+}
+.cards .card:before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--gv-green),var(--gv-lime));
+  transform:scaleX(0);transform-origin:left;transition:.3s
+}
+.cards .card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(12,55,34,.14)}
+.cards .card:hover:before{transform:scaleX(1)}
+.service-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  transition:.25s
+}
+.service-btn:hover{transform:translateX(4px)}
+.about img{box-shadow:0 18px 50px rgba(12,55,34,.12)}
+.project{transition:.3s;overflow:hidden}
+.project:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(12,55,34,.12)}
+.project img{transition:.5s}
+.project:hover img{transform:scale(1.05)}
+.contact-link{
+  display:inline-flex!important;align-items:center;gap:8px;
+  text-decoration:none!important
+}
+.contact-link:hover{transform:translateX(4px)}
+.form{box-shadow:0 20px 55px rgba(0,0,0,.16)}
+input,select,textarea{transition:.2s}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--gv-green);
+  box-shadow:0 0 0 3px rgba(47,157,79,.11)
+}
+.submit{transition:.25s}
+.submit:hover{transform:translateY(-2px);background:var(--gv-dark)}
+.floating-actions{
+  position:fixed;right:18px;bottom:18px;z-index:999;
+  display:flex;flex-direction:column;gap:9px
+}
+.floating-actions a{
+  width:52px;height:52px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;text-decoration:none;
+  color:#fff;font-size:22px;box-shadow:0 10px 25px rgba(0,0,0,.2)
+}
+.float-wa{background:#25d366}.float-call{background:#2f9d4f}
+@media(max-width:900px){
+  .menu-toggle{display:block}
+  nav{height:72px}
+  .links{
+    position:absolute;display:none;top:72px;left:4%;right:4%;
+    flex-direction:column;align-items:stretch;background:#fff;
+    padding:10px;border-radius:18px;box-shadow:0 18px 45px rgba(0,0,0,.14);
+    border:1px solid #e8eee8
+  }
+  .links.open{display:flex}
+  .links a{margin:0;padding:13px 15px}
+  .navbtn{text-align:center;margin-top:4px!important}
+}
+@media(max-width:600px){
+  nav{padding:0 5%}
+  nav .logo img{width:165px}
+  .hero{min-height:630px;padding:65px 6%}
+  .hero h1{font-size:38px;letter-spacing:-1px}
+  .hero p{font-size:16px}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr}
+  .hero-stat{padding:9px 10px}
+  .floating-actions{right:12px;bottom:12px}
+  .floating-actions a{width:48px;height:48px}
+}
+
+</style>
+</head>
+<body>
+<nav>
+ <div class="logo">
+    <img src="logo.jpeg" alt="GreenVistaa Logo">
+    <span>GreenVistaa</span>
+</div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+  <div class="links" id="navLinks">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a>
+    <a href="#projects">Projects</a><a href="#contact">Contact</a>
+    <a class="navbtn" href="https://wa.me/919345536955">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div>
+    <div class="tag">LANDSCAPING & GARDEN SOLUTIONS</div>
+    <h1>Transform Your Space Into a <span>Green Paradise</span></h1>
+    <p>Beautiful landscapes. Healthy plants. Happier spaces. We design, build and maintain outdoor spaces that inspire.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#contact">Get a Free Quote →</a>
+      <a class="btn outline" href="https://wa.me/919345536955" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">🌿 Garden Design</div>
+      <div class="hero-stat">🏡 Complete Landscaping</div>
+      <div class="hero-stat">💧 Irrigation Solutions</div>
+    </div>
+  </div>
+</header>
+
+<section id="services" class="services">
+  <div class="center"><div class="eyebrow">OUR SERVICES</div><h2 class="title">Complete Landscaping Solutions</h2><p class="sub">From design to maintenance, we offer a wide range of services to bring nature's beauty to your home or business.</p></div>
+  <div class="cards">
+    <div class="card">
+  <div class="icon">🌱</div>
+  <h3>Garden Design</h3>
+  <p>Beautiful and functional outdoor spaces.</p>
+  <a href="garden-design.html" class="service-btn">View Gallery →</a>
+</div>
+ <div class="card">
+  <div class="icon">🌳</div>
+  <h3>Landscaping</h3>
+  <p>Hardscape, softscape and complete landscape work.</p>
+
+  <a href="landscaping.html" class="service-btn">
+    View Gallery →
+  </a>
+</div>
+<div class="card">
+  <div class="icon">✂️</div>
+  <h3>Garden Maintenance</h3>
+  <p>Keep your garden fresh, healthy and beautiful.</p>
+
+  <a href="garden-maintenance.html" class="service-btn">
+    View Gallery →
+  </a>
+</div>   
+<div class="card">
+  <div class="icon">💧</div>
+  <h3>Irrigation System</h3>
+  <p>Efficient watering solutions for healthy plants.</p>
+
+  <a href="irrigation.html" class="service-btn">
+    View Gallery →
+  </a>
+</div> 
+<div class="card">
+  <div class="icon">🪴</div>
+  <h3>Vertical Garden</h3>
+  <p>Green walls and space saving garden solutions.</p>
+
+  <a href="vertical-garden.html" class="service-btn">
+    View Gallery →
+  </a>
+</div>    
+<div class="card">
+  <div class="icon">🌿</div>
+  <h3>Lawn Installation</h3>
+  <p>Healthy and lush lawns for homes and commercial spaces.</p>
+
+  <a href="lawn-installation.html" class="service-btn">
+    View Gallery →
+  </a>
+</div>    
+<div class="card">
+  <div class="icon">🌱</div>
+  <h3>Tree & Plant Care</h3>
+  <p>Professional care for healthy trees and plants.</p>
+
+  <a href="tree-plant-care.html" class="service-btn">
+    View Gallery →
+  </a> 
+</div>
+<div class="card">
+  <div class="icon">🏡</div>
+  <h3>Garden Renovation</h3>
+  <p>Give your existing garden a fresh new look.</p>
+
+  <a href="garden-renovation.html" class="service-btn">
+    View Gallery →
+  </a>
+</div>  
+</section>
+
+<section id="about" class="about">
+  <img src="hero.jpg" alt="GreenVistaa landscaped garden">
+  <div><div class="eyebrow">ABOUT US</div><h2 class="title">We Create Beautiful, Sustainable Landscapes</h2>
+  <p>GreenVistaa Landscaping & Garden Solutions is dedicated to designing, creating and maintaining beautiful green spaces for homes and businesses.</p>
+  <div class="ticks"><div class="tick">🌿 Experienced Team</div><div class="tick">✓ Quality Work</div><div class="tick">🤝 Customer Focus</div></div>
+  <a class="btn primary" href="#contact">Learn More →</a></div>
+</section>
+
+<section id="projects" class="projects">
+  <div><div class="eyebrow">OUR PROJECTS</div><h2 class="title">Beautiful Spaces We've Created</h2></div>
+  <div class="gallery">
+    <div class="project"><img src="hero.jpg" alt="Residential garden"><h4>Residential Garden</h4><small>Coimbatore</small></div>
+    <div class="project"><img src="hero.jpg" alt="Commercial landscape"><h4>Commercial Landscape</h4><small>Tiruppur</small></div>
+    <div class="project"><img src="hero.jpg" alt="Garden renovation"><h4>Garden Renovation</h4><small>Erode</small></div>
+    <div class="project"><img src="hero.jpg" alt="Vertical garden"><h4>Vertical Garden</h4><small>Coimbatore</small></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div><div class="eyebrow" style="color:#9be96d">GET IN TOUCH</div><h2 class="title">Let's Build Your Dream Garden</h2>
+  <p>Have a project in mind? Request a free quote and our team will get back to you.</p>
+  <p>    <a class="btn outline" href="tel:+919345536955">📞 +91 93455 36955</a>
+<br>    <a class="btn outline" href="https://wa.me/919345536955">💬 Chat on WhatsApp</a>
+<br>    <a class="btn outline" href="mailto:greenvistalandscapescbe@gmail.com">✉️ greenvistalandscapescbe@gmail.com</a>
+<br>    <a class="btn outline" href="https://www.google.com/maps/place/Coimbatore,+Tamil+Nadu/@11.0099236,76.9601749,12z/data=!3m1!4b1!4m6!3m5!1s0x3ba859af2f971cb5:0x2fc1c81e183ed282!8m2!3d10.9973691!4d76.9588876!16zL20vMDE5ZmM0?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D">📍 Coimbatore, Tamil Nadu</a>
+</p></div>
+  <form class="form" onsubmit="sendWhatsApp(event)">
+    <h3>Request a Quote</h3>
+    <input id="name" required placeholder="Your name">
+    <input id="phone" type="tel" inputmode="numeric" autocomplete="tel" required placeholder="Mobile number">
+    <select id="service"><option>Landscape Designing</option><option>Landscaping</option><option>Vertical Gardening</option><option>Pergolas & Stone Benches</option><option>Stone Leying</option><option>Lawn Installation</option><option>Annual Maintenance</option></select>
+    <textarea id="req" placeholder="Tell us about your project..."></textarea>
+    <button class="submit">Submit Request</button>
+  </form>
+  </section>
+
+<footer><div>🌿 <b>GreenVistaa</b> — Landscaping & Garden Solutions</div><div><a href="#home">Home</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a> © 2026</div></footer>
+
+<script>
+function sendWhatsApp(e){
+ e.preventDefault();
+ const msg=`Hello GreenVistaa!%0A%0AName: ${encodeURIComponent(document.getElementById('name').value)}%0AMobile: ${encodeURIComponent(document.getElementById('phone').value)}%0AService: ${encodeURIComponent(document.getElementById('service').value)}%0ARequirements: ${encodeURIComponent(document.getElementById('req').value)}`;
+ window.open('https://wa.me/919345536955?text='+msg,'_blank');
+}
+</script>
+<div class="floating-actions">
+  <a class="float-wa" href="https://wa.me/919345536955" target="_blank" aria-label="WhatsApp">💬</a>
+  <a class="float-call" href="tel:+919345536955" aria-label="Call">📞</a>
+</div>
+<div class="bottom-background"></div>
+</body>
+</html>
