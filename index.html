@@ -8,928 +8,7 @@
 
 <meta name="description" content="GreenVistaa landscaping and garden solutions. Garden design, landscaping, maintenance, irrigation, vertical gardens and lawn installation.">
 
-<style>
-
-:root{
-    --green:#0d4d2c;
-    --green2:#2e9d4d;
-    --light:#f4faf3;
-    --text:#17352a;
-    --muted:#66756e;
-    --gv-dark:#0b3d25;
-    --gv-green:#2f9d4f;
-    --gv-lime:#9be66d;
-    --gv-bg:#f5f8f2;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    color:var(--text);
-    background:#fff;
-    overflow-x:hidden;
-}
-
-/* =========================
-   NAVIGATION
-   ========================= */
-
-nav{
-    height:82px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6%;
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,.94);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    z-index:1000;
-    box-shadow:0 6px 25px rgba(0,0,0,.07);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    min-width:0;
-    text-decoration:none;
-}
-
-.logo img{
-    width:70px;
-    height:70px;
-    object-fit:contain;
-    border-radius:0%;
-}
-
-.logo span{
-    font-size:28px;
-    font-weight:800;
-    color:#168043;
-}
-
-.links{
-    display:flex;
-    align-items:center;
-    gap:3px;
-}
-
-.links a{
-    color:var(--text);
-    text-decoration:none;
-    padding:10px 13px;
-    border-radius:22px;
-    font-size:14px;
-    font-weight:700;
-    transition:.25s;
-}
-
-.links a:hover{
-    background:#edf8ea;
-    color:var(--gv-green);
-}
-
-.navbtn{
-    background:var(--green)!important;
-    color:#fff!important;
-    box-shadow:0 8px 20px rgba(11,61,37,.18);
-}
-
-.menu-toggle{
-    display:none;
-    border:0;
-    background:#edf8ea;
-    color:var(--gv-dark);
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    font-size:21px;
-    cursor:pointer;
-}
-
-/* =========================
-   HERO
-   ========================= */
-
-.hero{
-    min-height:660px;
-    position:relative;
-    isolation:isolate;
-    display:flex;
-    align-items:center;
-    padding:80px 7%;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(4,38,23,.94),
-            rgba(4,48,27,.68) 48%,
-            rgba(4,48,27,.12)
-        ),
-        url("main_hero_BG.jpeg") center/cover;
-    color:white;
-}
-
-.tag{
-    letter-spacing:3px;
-    font-size:13px;
-    font-weight:bold;
-}
-
-.hero h1{
-    font-size:clamp(42px,6vw,68px);
-    line-height:1.05;
-    letter-spacing:-2px;
-    max-width:720px;
-    margin:15px 0;
-}
-
-.hero h1 span{
-    color:#8be05a;
-}
-
-.hero p{
-    font-size:18px;
-    line-height:1.7;
-    max-width:650px;
-}
-
-.hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    padding:14px 24px;
-    border-radius:28px;
-    margin:15px 8px 0 0;
-    font-weight:bold;
-    transition:.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-.primary{
-    background:#79d34c;
-    color:#0b351f;
-    box-shadow:0 12px 28px rgba(0,0,0,.15);
-}
-
-.outline{
-    border:1px solid white;
-    color:white;
-}
-
-.hero-stats{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:28px;
-}
-
-.hero-stat{
-    background:rgba(255,255,255,.11);
-    border:1px solid rgba(255,255,255,.18);
-    backdrop-filter:blur(8px);
-    padding:10px 15px;
-    border-radius:14px;
-    font-size:12px;
-}
-
-/* =========================
-   SECTIONS
-   ========================= */
-
-section{
-    padding:80px 7%;
-}
-
-.center{
-    text-align:center;
-}
-
-.eyebrow{
-    color:#31994b;
-    font-weight:bold;
-    letter-spacing:2px;
-    font-size:12px;
-}
-
-.title{
-    font-size:38px;
-    margin:10px 0;
-}
-
-.sub{
-    color:var(--muted);
-    max-width:680px;
-    margin:0 auto 40px;
-    line-height:1.7;
-}
-
-/* =========================
-   SERVICES
-   ========================= */
-
-.services{
-    background:var(--light);
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:22px;
-}
-
-.card{
-    background:white;
-    padding:28px 20px;
-    text-align:center;
-    border-radius:18px;
-    border:1px solid #e8eee8;
-    box-shadow:0 8px 28px rgba(23,69,42,.07);
-    transition:.3s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card:before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:4px;
-    background:linear-gradient(
-        90deg,
-        var(--gv-green),
-        var(--gv-lime)
-    );
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 18px 45px rgba(12,55,34,.14);
-}
-
-.card:hover:before{
-    transform:scaleX(1);
-}
-
-.icon{
-    font-size:35px;
-}
-
-.card h3{
-    margin:15px 0 8px;
-}
-
-.card p{
-    color:var(--muted);
-    line-height:1.5;
-    font-size:14px;
-}
-
-.service-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    margin-top:12px;
-    padding:9px 16px;
-    background:#2e9d4d;
-    color:white;
-    text-decoration:none;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-    transition:.25s;
-}
-
-.service-btn:hover{
-    background:#0d4d2c;
-    transform:translateX(4px);
-}
-
-/* =========================
-   ABOUT
-   ========================= */
-
-.about{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:55px;
-    align-items:center;
-}
-
-.about img{
-    width:100%;
-    border-radius:20px;
-    box-shadow:0 18px 50px rgba(12,55,34,.12);
-}
-
-.about p{
-    color:var(--muted);
-    line-height:1.8;
-}
-
-.ticks{
-    display:flex;
-    gap:18px;
-    margin:25px 0;
-    flex-wrap:wrap;
-}
-
-.tick{
-    font-size:13px;
-    font-weight:bold;
-}
-
-/* =========================
-   PROJECTS
-   ========================= */
-
-.projects{
-    background:#f8fbf7;
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.project{
-    transition:.3s;
-    overflow:hidden;
-    border-radius:14px;
-}
-
-.project:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 45px rgba(12,55,34,.12);
-}
-
-.project img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:14px;
-    transition:.5s;
-}
-
-.project:hover img{
-    transform:scale(1.05);
-}
-
-.project h4{
-    margin:10px 0 3px;
-}
-
-.project small{
-    color:var(--muted);
-}
-
-/* =========================
-   CONTACT
-   ========================= */
-
-.contact{
-    background:var(--green);
-    color:white;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-}
-
-.contact p{
-    line-height:1.7;
-}
-
-.contact-link{
-    display:inline-flex!important;
-    align-items:center;
-    gap:8px;
-    text-decoration:none!important;
-}
-
-.form{
-    background:white;
-    padding:28px;
-    border-radius:16px;
-    color:var(--text);
-    box-shadow:0 20px 55px rgba(0,0,0,.16);
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:13px;
-    margin:7px 0 12px;
-    border:1px solid #dce5df;
-    border-radius:8px;
-    font:inherit;
-    transition:.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:var(--gv-green);
-    box-shadow:0 0 0 3px rgba(47,157,79,.11);
-}
-
-textarea{
-    height:100px;
-    resize:vertical;
-}
-
-.submit{
-    width:100%;
-    border:0;
-    padding:14px;
-    background:#2eaa48;
-    color:white;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.submit:hover{
-    transform:translateY(-2px);
-    background:var(--gv-dark);
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer{
-    background:#062c1b;
-    color:white;
-    padding:25px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:13px;
-}
-
-footer a{
-    color:white;
-    margin-left:15px;
-    text-decoration:none;
-}
-
-/* =========================
-   FLOATING BUTTONS
-   ========================= */
-
-.floating-actions{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:9999;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-}
-
-.floating-actions a{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    color:#fff;
-    font-size:22px;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-
-.float-wa{
-    background:#25d366;
-}
-
-.float-call{
-    background:#2f9d4f;
-}
-
-/* =========================
-   BOTTOM BACKGROUND
-   ========================= */
-
-.bottom-background{
-    width:100%;
-    height:110px;
-    background-image:url("bottom img.png");
-    background-repeat:no-repeat;
-    background-position:bottom center;
-    background-size:cover;
-}
-
-/* =================================================
-   GREEN VISTAA LOADING SCREEN
-   ================================================= */
-
-#gvLoader{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    background:
-        linear-gradient(
-            rgba(3,35,20,.94),
-            rgba(3,35,20,.97)
-        ),
-        url("hero.jpg") center/cover;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
-}
-
-#gvLoader.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-.loader-content{
-    text-align:center;
-    color:white;
-}
-
-/* Circular leaf area */
-
-.leaf-circle{
-    position:relative;
-    width:170px;
-    height:170px;
-    margin:0 auto 25px;
-    border-radius:50%;
-}
-
-.leaf-circle::before{
-    content:"";
-    position:absolute;
-    inset:8px;
-    border:2px solid rgba(126,224,91,.25);
-    border-top-color:#8be05a;
-    border-radius:50%;
-    animation:circleRotate 2.2s linear infinite;
-}
-
-/* Leaves */
-
-.loader-leaf{
-    position:absolute;
-    width:28px;
-    height:42px;
-    background:linear-gradient(
-        135deg,
-        #b5f47d,
-        #2e9d4d
-    );
-    border-radius:100% 0 100% 0;
-    box-shadow:0 0 15px rgba(139,224,90,.35);
-    animation:leafPulse 1.5s ease-in-out infinite;
-}
-
-.leaf1{
-    top:0;
-    left:71px;
-    transform:rotate(0deg);
-}
-
-.leaf2{
-    top:22px;
-    right:12px;
-    transform:rotate(45deg);
-    animation-delay:.15s;
-}
-
-.leaf3{
-    top:72px;
-    right:-2px;
-    transform:rotate(90deg);
-    animation-delay:.3s;
-}
-
-.leaf4{
-    bottom:12px;
-    right:20px;
-    transform:rotate(135deg);
-    animation-delay:.45s;
-}
-
-.leaf5{
-    bottom:-2px;
-    left:71px;
-    transform:rotate(180deg);
-    animation-delay:.6s;
-}
-
-.leaf6{
-    bottom:15px;
-    left:18px;
-    transform:rotate(225deg);
-    animation-delay:.75s;
-}
-
-.leaf7{
-    top:72px;
-    left:-2px;
-    transform:rotate(270deg);
-    animation-delay:.9s;
-}
-
-.leaf8{
-    top:22px;
-    left:12px;
-    transform:rotate(315deg);
-    animation-delay:1.05s;
-}
-
-/* Center logo */
-
-.loader-logo{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    z-index:5;
-}
-
-.loader-logo img{
-    width:55px;
-    height:55px;
-    object-fit:cover;
-    border-radius:50%;
-    margin-bottom:7px;
-}
-
-.loader-logo h2{
-    margin:0;
-    font-size:19px;
-    letter-spacing:2px;
-    color:white;
-}
-
-.loader-logo span{
-    font-size:8px;
-    letter-spacing:3px;
-    color:#9be66d;
-    margin-top:3px;
-}
-
-.loader-text{
-    font-size:14px;
-    letter-spacing:2px;
-    color:#dcefd4;
-    margin-bottom:13px;
-}
-
-.loader-dots span{
-    display:inline-block;
-    width:7px;
-    height:7px;
-    background:#8be05a;
-    border-radius:50%;
-    margin:0 4px;
-    animation:dotBounce 1.2s infinite;
-}
-
-.loader-dots span:nth-child(2){
-    animation-delay:.2s;
-}
-
-.loader-dots span:nth-child(3){
-    animation-delay:.4s;
-}
-
-@keyframes circleRotate{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes leafPulse{
-    0%,100%{
-        opacity:.55;
-        transform:scale(.85);
-    }
-
-    50%{
-        opacity:1;
-        transform:scale(1.05);
-    }
-}
-
-@keyframes dotBounce{
-    0%,60%,100%{
-        transform:translateY(0);
-        opacity:.4;
-    }
-
-    30%{
-        transform:translateY(-6px);
-        opacity:1;
-    }
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media(max-width:900px){
-
-    .menu-toggle{
-        display:block;
-    }
-
-    nav{
-        height:72px;
-    }
-
-    .links{
-        position:absolute;
-        display:none;
-        top:72px;
-        left:4%;
-        right:4%;
-        flex-direction:column;
-        align-items:stretch;
-        background:#fff;
-        padding:10px;
-        border-radius:18px;
-        box-shadow:0 18px 45px rgba(0,0,0,.14);
-        border:1px solid #e8eee8;
-    }
-
-    .links.open{
-        display:flex;
-    }
-
-    .links a{
-        margin:0;
-        padding:13px 15px;
-    }
-
-    .navbtn{
-        text-align:center;
-        margin-top:4px!important;
-    }
-
-    .hero h1{
-        font-size:42px;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .gallery{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .about,
-    .contact{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:600px){
-
-    nav{
-        padding:0 5%;
-    }
-
-   @media(max-width:600px){
-    nav .logo img{
-        width:60px;
-        height:60px;
-        border-radius:0;
-        object-fit:contain;
-    }
-}
-
-    .logo span{
-        font-size:22px;
-    }
-
-    .hero{
-        min-height:630px;
-        padding:65px 6%;
-    }
-
-    .hero h1{
-        font-size:38px;
-        letter-spacing:-1px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .hero-actions{
-        display:grid;
-        grid-template-columns:1fr;
-    }
-
-    .hero-actions .btn{
-        width:100%;
-    }
-
-    .hero-stats{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero-stat{
-        padding:9px 10px;
-    }
-
-    section{
-        padding:55px 5%;
-    }
-
-    .title{
-        font-size:32px;
-    }
-
-    .cards,
-    .gallery{
-        grid-template-columns:1fr;
-    }
-
-    .project img{
-        height:240px;
-    }
-
-    footer{
-        display:block;
-        line-height:2;
-    }
-
-    .floating-actions{
-        right:12px;
-        bottom:12px;
-    }
-
-    .floating-actions a{
-        width:48px;
-        height:48px;
-    }
-
-    .leaf-circle{
-        width:145px;
-        height:145px;
-    }
-
-    .loader-logo img{
-        width:48px;
-        height:48px;
-    }
-
-    .loader-logo h2{
-        font-size:16px;
-    }
-
-    .loader-text{
-        font-size:12px;
-    }
-}
-
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -954,7 +33,7 @@ footer a{
             <div class="loader-leaf leaf8"></div>
 
             <div class="loader-logo">
-                <img src="logo.jpeg" alt="Green Vistaa">
+                <img src="assets/images/logo.jpeg" alt="Green Vistaa">
                 <h2>GREEN VISTAA</h2>
                 <span>LANDSCAPING</span>
             </div>
@@ -982,9 +61,9 @@ footer a{
 
 <nav>
 
-    <a href="#home" class="logo">
-        <img src="logo.jpeg" alt="GreenVistaa Logo">
-        <span>GreenVistaa</span>
+    <a href="index.html" class="logo logo-container">
+        <img src="assets/images/logo.jpeg" alt="Green Vistaa Logo" class="brand-icon">
+        <img src="assets/images/brand-name.png" alt="Green Vistaa" class="brand-name-img">
     </a>
 
     <button
@@ -996,7 +75,7 @@ footer a{
 
     <div class="links" id="navLinks">
 
-        <a href="#home">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
@@ -1101,7 +180,7 @@ footer a{
             <div class="icon">🌱</div>
             <h3>Garden Design</h3>
             <p>Beautiful and functional outdoor spaces.</p>
-            <a href="garden-design.html" class="service-btn">
+            <a href="pages/garden-design.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1110,7 +189,7 @@ footer a{
             <div class="icon">🌳</div>
             <h3>Landscaping</h3>
             <p>Hardscape, softscape and complete landscape work.</p>
-            <a href="landscaping.html" class="service-btn">
+            <a href="pages/landscaping.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1119,7 +198,7 @@ footer a{
             <div class="icon">✂️</div>
             <h3>Garden Maintenance</h3>
             <p>Keep your garden fresh, healthy and beautiful.</p>
-            <a href="garden-maintenance.html" class="service-btn">
+            <a href="pages/garden-maintenance.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1128,7 +207,7 @@ footer a{
             <div class="icon">💧</div>
             <h3>Irrigation System</h3>
             <p>Efficient watering solutions for healthy plants.</p>
-            <a href="irrigation.html" class="service-btn">
+            <a href="pages/irrigation-system.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1137,7 +216,7 @@ footer a{
             <div class="icon">🪴</div>
             <h3>Vertical Garden</h3>
             <p>Green walls and space saving garden solutions.</p>
-            <a href="vertical-garden.html" class="service-btn">
+            <a href="pages/vertical-garden.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1146,7 +225,7 @@ footer a{
             <div class="icon">🌿</div>
             <h3>Lawn Installation</h3>
             <p>Healthy and lush lawns for homes and commercial spaces.</p>
-            <a href="lawn-installation.html" class="service-btn">
+            <a href="pages/lawn-installation.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1155,7 +234,7 @@ footer a{
             <div class="icon">🌱</div>
             <h3>Tree & Plant Care</h3>
             <p>Professional care for healthy trees and plants.</p>
-            <a href="tree-plant-care.html" class="service-btn">
+            <a href="pages/tree-plant-care.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1164,7 +243,7 @@ footer a{
             <div class="icon">🏡</div>
             <h3>Garden Renovation</h3>
             <p>Give your existing garden a fresh new look.</p>
-            <a href="garden-renovation.html" class="service-btn">
+            <a href="pages/garden-renovation.html" class="service-btn">
                 View Gallery →
             </a>
         </div>
@@ -1181,7 +260,7 @@ footer a{
 <section id="about" class="about">
 
     <img
-        src="Main_BG.jpeg"
+        src="assets/images/Main_BG.jpeg"
         alt="GreenVistaa landscaped garden">
 
     <div>
@@ -1246,25 +325,25 @@ footer a{
     <div class="gallery">
 
         <div class="project">
-            <img src="hero.jpg" alt="Residential garden">
+            <img src="assets/images/hero.jpg" alt="Residential garden">
             <h4>Residential Garden</h4>
             <small>Coimbatore</small>
         </div>
 
         <div class="project">
-            <img src="hero.jpg" alt="Commercial landscape">
+            <img src="assets/images/hero.jpg" alt="Commercial landscape">
             <h4>Commercial Landscape</h4>
             <small>Tiruppur</small>
         </div>
 
         <div class="project">
-            <img src="hero.jpg" alt="Garden renovation">
+            <img src="assets/images/hero.jpg" alt="Garden renovation">
             <h4>Garden Renovation</h4>
             <small>Erode</small>
         </div>
 
         <div class="project">
-            <img src="hero.jpg" alt="Vertical garden">
+            <img src="assets/images/hero.jpg" alt="Vertical garden">
             <h4>Vertical Garden</h4>
             <small>Coimbatore</small>
         </div>
@@ -1387,24 +466,74 @@ footer a{
      FOOTER
      ========================= -->
 
-<footer>
-
-    <div>
-        🌿 <b>GreenVistaa</b>
-        — Landscaping & Garden Solutions
+<!-- ========================================================
+     ENHANCED LUXURY FOOTER
+     ======================================================== -->
+<footer class="gv-site-footer">
+  <div class="gv-footer-container">
+    
+    <!-- Column 1: Brand & Bio -->
+    <div class="gv-footer-col gv-footer-brand-col">
+      <div class="gv-footer-brand-header">
+        <img src="assets/images/logo.jpeg" alt="Green Vistaa Emblem" class="gv-footer-logo-img" />
+        <img src="assets/images/brand-name-white.png" alt="Green Vistaa" class="gv-footer-brand-name-img" />
+      </div>
+      <p class="gv-footer-bio">
+        Transforming residential and commercial properties into sustainable, breathtaking landscapes and living gardens designed for your lifestyle.
+      </p>
+      <div class="gv-footer-trust-tag">
+        <span>🌱 Eco-Friendly</span>
+        <span>✓ Quality Assured</span>
+      </div>
     </div>
 
-    <div>
-
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-
-        © 2026
-
+    <!-- Column 2: Quick Links -->
+    <div class="gv-footer-col">
+      <h4>Quick Links</h4>
+      <ul class="gv-footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Green Vistaa</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#projects">Recent Projects</a></li>
+        <li><a href="#contact">Request a Quote</a></li>
+      </ul>
     </div>
 
+    <!-- Column 3: Services -->
+    <div class="gv-footer-col">
+      <h4>Our Services</h4>
+      <ul class="gv-footer-nav">
+        <li><a href="pages/garden-design.html">Garden Design</a></li>
+        <li><a href="pages/landscaping.html">Landscaping</a></li>
+        <li><a href="pages/garden-renovation.html">Garden Renovation</a></li>
+        <li><a href="pages/vertical-garden.html">Vertical Gardens</a></li>
+        <li><a href="pages/lawn-installation.html">Lawn & Irrigation Systems</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Contact & Hours -->
+    <div class="gv-footer-col">
+      <h4>Get in Touch</h4>
+      <div class="gv-footer-contact-info">
+        <p><span>📍</span> Coimbatore, Tamil Nadu, India</p>
+        <p><span>📞</span> <a href="tel:+919345536955">+91 93455 36955</a></p>
+        <p><span>✉️</span> <a href="mailto:greenvistalandscapescbe@gmail.com">greenvistalandscapescbe@gmail.com</a></p>
+        <p><span>⏰</span> Mon – Sat: 9:00 AM – 7:00 PM</p>
+      </div>
+      <a href="https://wa.me/919345536955?text=Hello%20GreenVistaa!%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="gv-footer-whatsapp-btn">
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bottom Copyright Bar -->
+  <div class="gv-footer-bottom-bar">
+    <div class="gv-footer-bottom-container">
+      <p>&copy; 2026 Green Vistaa — Landscaping & Garden Solutions. All rights reserved.</p>
+      <p class="gv-footer-sub-tag">Designed with Nature in Mind 🌿</p>
+    </div>
+  </div>
 </footer>
 
 
@@ -1432,123 +561,11 @@ footer a{
 </div>
 
 
-<div class="bottom-background"></div>
-
-
 <!-- =========================
-     JAVASCRIPT
+     JAVASCRIPT BUNDLE
      ========================= -->
-
-<script>
-
-/* =========================
-   LOADER
-   ========================= */
-
-(function(){
-
-    const loader = document.getElementById("gvLoader");
-
-    if(!loader){
-        return;
-    }
-
-    /*
-       Loader will automatically disappear
-       after 2.5 seconds.
-
-       It does NOT depend on window.load,
-       so hero.jpg or another image cannot
-       keep the loader stuck.
-    */
-
-    setTimeout(function(){
-
-        loader.classList.add("hide");
-
-        setTimeout(function(){
-
-            if(loader){
-                loader.style.display = "none";
-            }
-
-        }, 900);
-
-    }, 2500);
-
-})();
-
-
-/* =========================
-   MOBILE MENU
-   ========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-if(menuToggle && navLinks){
-
-    menuToggle.addEventListener("click", function(){
-
-        navLinks.classList.toggle("open");
-
-    });
-
-    navLinks.querySelectorAll("a").forEach(function(link){
-
-        link.addEventListener("click", function(){
-
-            navLinks.classList.remove("open");
-
-        });
-
-    });
-
-}
-
-
-/* =========================
-   WHATSAPP QUOTE FORM
-   ========================= */
-
-function sendWhatsApp(e){
-
-    e.preventDefault();
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const service =
-        document.getElementById("service").value;
-
-    const req =
-        document.getElementById("req").value.trim();
-
-
-    const message =
-        "Hello GreenVistaa!\n\n" +
-        "Name: " + name + "\n" +
-        "Mobile: " + phone + "\n" +
-        "Service: " + service + "\n" +
-        "Requirements: " + req;
-
-
-    const whatsappURL =
-        "https://wa.me/919345536955?text=" +
-        encodeURIComponent(message);
-
-
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
-
-}
-
-</script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/cms-loader.js"></script>
 
 </body>
 </html>
