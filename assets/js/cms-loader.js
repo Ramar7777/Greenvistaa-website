@@ -123,7 +123,7 @@
       }
 
       // ==========================================
-      // 5. Inner Service Pages Gallery Images
+      // 5. Inner Service Pages Gallery Images (Multiple Photos Support)
       // ==========================================
       if (!isHomePage && data.serviceGalleries) {
         const path = window.location.pathname;
@@ -133,13 +133,16 @@
           const images = data.serviceGalleries[filename];
           const galleryContainer = document.getElementById("gallery");
 
-          if (galleryContainer && Array.isArray(images)) {
-            const imgEls = galleryContainer.querySelectorAll("img");
-            images.forEach(function (imgSrc, idx) {
-              if (imgEls[idx] && imgSrc) {
-                imgEls[idx].src = imgSrc;
-              }
-            });
+          if (galleryContainer && Array.isArray(images) && images.length > 0) {
+            const heading = document.querySelector(".section-header h2, h1")?.textContent?.trim() || "Project";
+            galleryContainer.innerHTML = images
+              .map(function (imgSrc, idx) {
+                return `
+      <div class="gv-gallery-item" tabindex="0">
+        <img src="${imgSrc}" alt="${heading} Showcase ${idx + 1}" loading="lazy" />
+      </div>`;
+              })
+              .join("");
           }
         }
       }

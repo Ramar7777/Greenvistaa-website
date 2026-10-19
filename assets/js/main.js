@@ -4,7 +4,7 @@
  */
 
 /* ========================================================
-   1. PRELOADER
+   1. MODERN RESPONSIVE PRELOADER CONTROLLER
    ======================================================== */
 (function () {
   "use strict";
@@ -12,24 +12,96 @@
   const loader = document.getElementById("gvLoader");
   if (!loader) return;
 
-  function hideLoader() {
-    loader.classList.add("hide");
-    loader.style.opacity = "0";
-    setTimeout(function () {
-      if (loader) {
-        loader.style.display = "none";
-      }
-    }, 800);
+  const bar = document.getElementById("gvProgressBar");
+  const number = document.getElementById("gvProgressNumber");
+  const status = document.getElementById("gvProgressStatus");
+
+  const phrases = [
+    "Cultivating botanical designs...",
+    "Harmonizing living landscapes...",
+    "Nurturing your green sanctuary...",
+    "Welcome to Green Vistaa"
+  ];
+
+  let currentProgress = 0;
+  let phraseIdx = 0;
+  let isPageLoaded = false;
+  let isDismissed = false;
+
+  function updateUI(percent, text) {
+    if (bar) bar.style.width = percent + "%";
+    if (number) number.textContent = Math.round(percent) + "%";
+    if (status && text) status.textContent = text;
   }
 
-  // Hide on window load, or fallback after 2.5s so slow network never blocks the UI
+  // Smooth progress simulation
+  const progressInterval = setInterval(function () {
+    if (isDismissed) {
+      clearInterval(progressInterval);
+      return;
+    }
+
+    if (!isPageLoaded) {
+      // Approach up to 88% while waiting for window load
+      if (currentProgress < 40) {
+        currentProgress += Math.random() * 8 + 4;
+      } else if (currentProgress < 75) {
+        currentProgress += Math.random() * 4 + 2;
+      } else if (currentProgress < 88) {
+        currentProgress += Math.random() * 1.5 + 0.5;
+      }
+
+      // Rotate status phrases
+      if (currentProgress > 30 && phraseIdx === 0) {
+        phraseIdx = 1;
+        if (status) status.textContent = phrases[1];
+      } else if (currentProgress > 65 && phraseIdx === 1) {
+        phraseIdx = 2;
+        if (status) status.textContent = phrases[2];
+      }
+    } else {
+      // Once loaded, accelerate to 100%
+      currentProgress += 12;
+      if (currentProgress >= 100) {
+        currentProgress = 100;
+        clearInterval(progressInterval);
+        dismissLoader();
+      }
+    }
+
+    updateUI(Math.min(currentProgress, 100));
+  }, 50);
+
+  function dismissLoader() {
+    if (isDismissed) return;
+    isDismissed = true;
+    updateUI(100, phrases[3]);
+
+    setTimeout(function () {
+      loader.classList.add("hide");
+      setTimeout(function () {
+        if (loader && loader.parentNode) {
+          loader.style.display = "none";
+        }
+      }, 800);
+    }, 280);
+  }
+
+  function markLoaded() {
+    isPageLoaded = true;
+  }
+
   if (document.readyState === "complete") {
-    setTimeout(hideLoader, 600);
+    setTimeout(markLoaded, 300);
   } else {
     window.addEventListener("load", function () {
-      setTimeout(hideLoader, 500);
+      setTimeout(markLoaded, 250);
     });
-    setTimeout(hideLoader, 2500);
+    // Safety fallback: never block user for longer than 2.2 seconds
+    setTimeout(function () {
+      markLoaded();
+      dismissLoader();
+    }, 2200);
   }
 })();
 

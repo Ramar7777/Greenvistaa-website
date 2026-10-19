@@ -228,6 +228,94 @@
       cmsScript.src = "../assets/js/cms-loader.js";
       document.body.appendChild(cmsScript);
     }
+
+    // Initialize Subpage Gallery Lightbox
+    initSubpageLightbox();
+  }
+
+  // Subpage Image Lightbox Modal
+  function initSubpageLightbox() {
+    if (document.getElementById("gvSubpageLightbox")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "gvSubpageLightbox";
+    modal.style.cssText = `
+      position: fixed; inset: 0; z-index: 999999;
+      background: rgba(4, 28, 16, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: none; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s ease; padding: 20px; box-sizing: border-box;
+    `;
+
+    modal.innerHTML = `
+      <div style="position: relative; max-width: 92vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+        <button id="gvSubpageClose" style="
+          position: absolute; top: -45px; right: 0;
+          background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);
+          color: #ffffff; width: 38px; height: 38px; border-radius: 50%;
+          cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+          transition: all 0.2s ease;
+        " aria-label="Close Lightbox">✕</button>
+        <img id="gvSubpageModalImg" src="" alt="Gallery Image" style="
+          max-width: 100%; max-height: 80vh; object-fit: contain;
+          border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+        " />
+        <div id="gvSubpageModalCaption" style="
+          margin-top: 14px; color: #dcefd4; font-size: 0.95rem; font-weight: 500; text-align: center;
+        "></div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const modalImg = document.getElementById("gvSubpageModalImg");
+    const modalCaption = document.getElementById("gvSubpageModalCaption");
+    const closeBtn = document.getElementById("gvSubpageClose");
+
+    function openModal(src, caption) {
+      modalImg.src = src;
+      modalCaption.textContent = caption || "";
+      modal.style.display = "flex";
+      requestAnimationFrame(function () {
+        modal.style.opacity = "1";
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    function closeModal() {
+      modal.style.opacity = "0";
+      document.body.style.overflow = "";
+      setTimeout(function () {
+        modal.style.display = "none";
+        modalImg.src = "";
+      }, 250);
+    }
+
+    // Delegated click on any .gv-gallery-item
+    document.addEventListener("click", function (e) {
+      const item = e.target.closest(".gv-gallery-item");
+      if (!item) return;
+
+      const img = item.querySelector("img");
+      if (!img || !img.src) return;
+
+      const caption = img.alt || document.querySelector("h1, h2")?.textContent || "Service Project Showcase";
+      openModal(img.src, caption);
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+    });
   }
 
   // Run on DOM ready

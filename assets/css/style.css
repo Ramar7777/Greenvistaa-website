@@ -1341,221 +1341,269 @@ img[src*="bottom"],
 }
 
 /* =================================================
-   GREEN VISTAA LOADING SCREEN
+   GREEN VISTAA - ULTRA-MODERN RESPONSIVE PRELOADER
+   (Optimized flawlessly for both Phone & Laptop screens)
    ================================================= */
 
-#gvLoader{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    background:
-        linear-gradient(
-            rgba(3,35,20,.94),
-            rgba(3,35,20,.97)
-        ),
-        url("../images/hero.jpg") center/cover;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
+#gvLoader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4vw, 36px);
+    box-sizing: border-box;
+    background: radial-gradient(circle at 50% 40%, #0d3822 0%, #062415 50%, #02120a 100%);
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#gvLoader.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+#gvLoader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.loader-content{
-    text-align:center;
-    color:white;
+/* Ambient Radial Aura Effect in Background */
+.gv-loader-aura {
+    position: absolute;
+    width: clamp(260px, 50vw, 520px);
+    height: clamp(260px, 50vw, 520px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.22) 0%, rgba(34, 197, 94, 0.08) 50%, transparent 70%);
+    filter: blur(50px);
+    pointer-events: none;
+    animation: auraPulse 5s ease-in-out infinite alternate;
 }
 
-/* Circular leaf area */
-
-.leaf-circle{
-    position:relative;
-    width:170px;
-    height:170px;
-    margin:0 auto 25px;
-    border-radius:50%;
+/* Floating Glassmorphic Center Card */
+.gv-loader-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: clamp(300px, 92vw, 440px);
+    padding: clamp(28px, 6vw, 44px) clamp(20px, 5vw, 36px);
+    background: rgba(14, 46, 28, 0.55);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(139, 224, 90, 0.22);
+    border-radius: clamp(20px, 5vw, 30px);
+    box-shadow: 
+        0 24px 60px -10px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 0 40px rgba(46, 157, 77, 0.15);
+    text-align: center;
+    box-sizing: border-box;
+    transform: translateY(0);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.leaf-circle::before{
-    content:"";
-    position:absolute;
-    inset:8px;
-    border:2px solid rgba(126,224,91,.25);
-    border-top-color:#8be05a;
-    border-radius:50%;
-    animation:circleRotate 2.2s linear infinite;
+#gvLoader.hide .gv-loader-card {
+    transform: scale(0.96) translateY(-8px);
+    filter: blur(6px);
 }
 
-/* Leaves */
-
-.loader-leaf{
-    position:absolute;
-    width:28px;
-    height:42px;
-    background:linear-gradient(
-        135deg,
-        #b5f47d,
-        #2e9d4d
-    );
-    border-radius:100% 0 100% 0;
-    box-shadow:0 0 15px rgba(139,224,90,.35);
-    animation:leafPulse 1.5s ease-in-out infinite;
+/* Brand Emblem with Rotating Orbital Glow */
+.gv-loader-emblem-wrap {
+    position: relative;
+    width: clamp(80px, 18vw, 100px);
+    height: clamp(80px, 18vw, 100px);
+    margin: 0 auto clamp(18px, 4vw, 26px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.leaf1{
-    top:0;
-    left:71px;
-    transform:rotate(0deg);
+.gv-loader-orbital {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0%, #4ade80 40%, #86efac 70%, transparent 100%);
+    animation: orbitalSpin 2.4s linear infinite;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(74, 222, 128, 0.55));
 }
 
-.leaf2{
-    top:22px;
-    right:12px;
-    transform:rotate(45deg);
-    animation-delay:.15s;
+.gv-loader-orbital::after {
+    content: "";
+    position: absolute;
+    inset: 2.5px;
+    background: #092617;
+    border-radius: 50%;
 }
 
-.leaf3{
-    top:72px;
-    right:-2px;
-    transform:rotate(90deg);
-    animation-delay:.3s;
+.gv-loader-emblem {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.leaf4{
-    bottom:12px;
-    right:20px;
-    transform:rotate(135deg);
-    animation-delay:.45s;
+.gv-loader-emblem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
 }
 
-.leaf5{
-    bottom:-2px;
-    left:71px;
-    transform:rotate(180deg);
-    animation-delay:.6s;
+/* Brand Typography */
+.gv-loader-brand {
+    margin-bottom: clamp(18px, 4vw, 24px);
 }
 
-.leaf6{
-    bottom:15px;
-    left:18px;
-    transform:rotate(225deg);
-    animation-delay:.75s;
+.gv-loader-title {
+    margin: 0;
+    font-size: clamp(1.3rem, 4.2vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: clamp(3px, 1vw, 5px);
+    line-height: 1.2;
+    background: linear-gradient(135deg, #ffffff 20%, #bbf7d0 60%, #4ade80 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
 }
 
-.leaf7{
-    top:72px;
-    left:-2px;
-    transform:rotate(270deg);
-    animation-delay:.9s;
+.gv-loader-badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 14px;
+    background: rgba(139, 224, 90, 0.12);
+    border: 1px solid rgba(139, 224, 90, 0.28);
+    border-radius: 999px;
+    color: #86efac;
+    font-size: clamp(0.65rem, 2vw, 0.76rem);
+    font-weight: 600;
+    letter-spacing: clamp(1.5px, 0.5vw, 2.8px);
+    text-transform: uppercase;
 }
 
-.leaf8{
-    top:22px;
-    left:12px;
-    transform:rotate(315deg);
-    animation-delay:1.05s;
+/* Modern Progress Bar Section */
+.gv-loader-progress-section {
+    width: 100%;
+    margin-top: clamp(14px, 3vw, 20px);
 }
 
-/* Center logo */
-
-.loader-logo{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    z-index:5;
+.gv-loader-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.loader-logo img{
-    width:55px;
-    height:55px;
-    object-fit:cover;
-    border-radius:50%;
-    margin-bottom:7px;
+.gv-loader-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #16a34a 0%, #4ade80 60%, #86efac 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 16px rgba(74, 222, 128, 0.7);
+    transition: width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
 }
 
-.loader-logo h2{
-    margin:0;
-    font-size:19px;
-    letter-spacing:2px;
-    color:white;
+.gv-loader-progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0.9;
 }
 
-.loader-logo span{
-    font-size:8px;
-    letter-spacing:3px;
-    color:#9be66d;
-    margin-top:3px;
+.gv-loader-progress-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: clamp(0.72rem, 2vw, 0.82rem);
 }
 
-.loader-text{
-    font-size:14px;
-    letter-spacing:2px;
-    color:#dcefd4;
-    margin-bottom:13px;
+.gv-loader-status {
+    color: #cbd5e1;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    transition: opacity 0.25s ease;
 }
 
-.loader-dots span{
-    display:inline-block;
-    width:7px;
-    height:7px;
-    background:#8be05a;
-    border-radius:50%;
-    margin:0 4px;
-    animation:dotBounce 1.2s infinite;
+.gv-loader-number {
+    color: #4ade80;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
 }
 
-.loader-dots span:nth-child(2){
-    animation-delay:.2s;
-}
-
-.loader-dots span:nth-child(3){
-    animation-delay:.4s;
-}
-
-@keyframes circleRotate{
-    to{
-        transform:rotate(360deg);
+/* Animations */
+@keyframes orbitalSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 
-@keyframes leafPulse{
-    0%,100%{
-        opacity:.55;
-        transform:scale(.85);
+@keyframes auraPulse {
+    0% {
+        transform: scale(0.9) translate(-10px, -10px);
+        opacity: 0.14;
     }
-
-    50%{
-        opacity:1;
-        transform:scale(1.05);
+    100% {
+        transform: scale(1.15) translate(10px, 10px);
+        opacity: 0.26;
     }
 }
 
-@keyframes dotBounce{
-    0%,60%,100%{
-        transform:translateY(0);
-        opacity:.4;
+/* Mobile specific fine-tuning */
+@media (max-width: 480px) {
+    #gvLoader {
+        padding: 18px;
     }
 
-    30%{
-        transform:translateY(-6px);
-        opacity:1;
+    .gv-loader-card {
+        padding: 28px 18px;
+        border-radius: 22px;
+    }
+
+    .gv-loader-title {
+        letter-spacing: 2.5px;
+    }
+
+    .gv-loader-badge {
+        letter-spacing: 1.2px;
+        font-size: 0.65rem;
+        padding: 3px 10px;
     }
 }
 
