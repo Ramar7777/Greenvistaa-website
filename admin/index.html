@@ -166,11 +166,11 @@
       const errorDiv = document.getElementById("errorMsg");
 
       // Verify Credentials (admin / admin)
-      if (u === "admin" && p === "admin") {
+      if (u === "admin" && p === "Muthu@3031") {
         sessionStorage.setItem("gv_admin_logged", "true");
         window.location.href = "dashboard.html";
       } else {
-        errorDiv.textContent = "Invalid username or password! (Use: admin / admin)";
+        errorDiv.textContent = "Invalid username or password!";
         errorDiv.style.display = "block";
       }
     });
